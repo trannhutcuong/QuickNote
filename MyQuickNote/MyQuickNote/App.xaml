@@ -1,0 +1,10 @@
+﻿<Application x:Class="MyQuickNote.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:MyQuickNote"
+             StartupUri="MainWindow.xaml">
+    
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>

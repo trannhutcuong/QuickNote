@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyQuickNote", "MyQuickNote\MyQuickNote.csproj", "{702B4E58-3277-4C6B-ABBA-AB0B6240BB9C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{702B4E58-3277-4C6B-ABBA-AB0B6240BB9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{702B4E58-3277-4C6B-ABBA-AB0B6240BB9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{702B4E58-3277-4C6B-ABBA-AB0B6240BB9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{702B4E58-3277-4C6B-ABBA-AB0B6240BB9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {72239C59-D2A7-4F13-AFB3-195BA236938F}
+	EndGlobalSection
+EndGlobal

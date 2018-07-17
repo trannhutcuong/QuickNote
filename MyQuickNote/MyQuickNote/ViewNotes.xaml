@@ -1,0 +1,162 @@
+﻿<Window x:Class="MyQuickNote.ViewNotes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyQuickNote"
+        mc:Ignorable="d"
+        Title="ViewNotes" Height="570" Width="985" ResizeMode="CanMinimize" 
+        WindowStartupLocation="CenterScreen" Closing="Window_Closing">
+    <StackPanel Background="#FFEFF9F7">
+
+        <StackPanel Height="40" Orientation="Horizontal">
+            <Image Source="Images/Tag.png" VerticalAlignment="Bottom" 
+                   HorizontalAlignment="Left" Margin="10,0,0,0" Width="30"/>
+            <Label FontFamily="Times new roman" VerticalAlignment="Center"
+                   FontSize="14" HorizontalAlignment="Left" Margin="0,15,0,0"
+                   FontWeight="Bold" Foreground="Blue" Content="LIST TAGS"/>
+            <Image Source="Images/listnote.png" VerticalAlignment="Bottom" 
+                   HorizontalAlignment="Left" Margin="160,10,0,0"></Image>
+            <Label FontFamily="Times new roman" VerticalAlignment="Center"
+                   FontSize="14" HorizontalAlignment="Left" Margin="0,15,0,0"
+                   FontWeight="Bold" Foreground="Blue" Content="LIST NOTES"/>
+            <Image Source="Images/fullcontent.png" VerticalAlignment="Bottom" 
+                   HorizontalAlignment="Left" Margin="175,5,0,0"></Image>
+            <Label FontFamily="Times new roman" VerticalAlignment="Center"
+                   FontSize="14" HorizontalAlignment="Left" Margin="0,15,0,0"
+                   FontWeight="Bold" Foreground="Blue" Content="FULL CONTENT OF NOTE"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Height="420">
+            <!-- danh sách tag -->
+            <ListView Margin="10"
+                          FontFamily="Times new roman"
+                          FontSize="15"
+                          Foreground="Black"
+                          Name="lvTags"
+                          Width="250">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Tags"
+                                        Width="175">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button FontFamily="Arial" Background="#FFEFF9F7"
+                                                Content="X"
+                                                FontWeight="Bold"
+                                                Foreground="Red"
+                                                Width="17"
+                                                Height="18" Click="Button_XoaTag_Click"/>
+                                        <TextBlock Text="{Binding tag}"
+                                                   Margin="5,0,0,0"
+                                                   Width="300"
+                                                   MouseLeftButtonDown="Chon_Note_Tag"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Header="Amount"
+                                        Width="70">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding soluongtag}"
+                                               Margin="20,0,0,0"
+                                               Width="70"
+                                               MouseLeftButtonDown="Chon_Note_Tag"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <!-- Danh sách các note của tag -->
+            <ListView Margin="0, 10, 10, 10"
+                      FontFamily="Times new roman"
+                      FontSize="15"
+                      Foreground="Black" Width="290"
+                      Name="lvNotes" HorizontalAlignment="Left">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Notes"
+                                        Width="285">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button FontFamily="Arial" Background="#FFEFF9F7"
+                                                Content="X"
+                                                FontWeight="Bold"
+                                                Foreground="Red"
+                                                Width="17"
+                                                Height="18" Click="Button_XoaNote_Click"/>
+                                        <TextBlock Text="{Binding note}"
+                                               Margin="10,0,0,0" Width="300"
+                                               MouseLeftButtonDown="Xem_Full_Note"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <!-- Full note -->
+            <StackPanel>
+                <ListView Margin="0,10,0,0"
+                      FontFamily="Times new roman"
+                      FontSize="16"
+                      Foreground="Black" Width="385" Height="21"
+                      HorizontalAlignment="Left">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Full note"
+                                            Width="380"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <TextBox Width="385" Height="377"
+                         FontFamily="Times new roman"
+                         FontSize="15"
+                         Foreground="Black"
+                         TextWrapping="Wrap"
+                         Name="tbFull"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Height="80">
+            <Border Height="40" 
+                    Width="80" HorizontalAlignment="Left"
+                    CornerRadius="4"
+                    Background="#FF1D71D6"
+                    Margin="770,0,120,0">
+                <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                        Height="32"
+                        Width="71"
+                        FontFamily="Times new roman"
+                        FontSize="15"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        Click="Button_Update">Refresh</Button>
+            </Border>
+            
+            <Border Height="40" VerticalAlignment="Center"
+                    Width="65" HorizontalAlignment="Left"
+                    CornerRadius="4"
+                    Background="#FF1D71D6"
+                    Margin="-95,0,0,0">
+                <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                        Height="32"
+                        Width="56"
+                        FontFamily="Times new roman"
+                        FontSize="15"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        Click="Button_Thoat">Exit</Button>
+            </Border>
+        </StackPanel>
+    </StackPanel>
+</Window>
+<!--Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"-->

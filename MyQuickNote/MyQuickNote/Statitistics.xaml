@@ -1,0 +1,142 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyQuickNote"
+        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit" x:Class="MyQuickNote.Statitistics"
+        mc:Ignorable="d"
+        Title="Statitistics" Height="620" Width="800" ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen" Closing="Window_Closing">
+    <StackPanel Background="#FFEFF9F7">
+        <Grid Height="65">
+            <RadioButton IsChecked="True"
+                         VerticalAlignment="Top"
+                         HorizontalAlignment="Left" 
+                         Margin="40,15,600,0"
+                         Name="Pie"/>
+            <RadioButton VerticalAlignment="Top"
+                         HorizontalAlignment="Left" 
+                         Margin="100,15,500,0"
+                         Name="Bar"/>
+            <RadioButton VerticalAlignment="Top"
+                         HorizontalAlignment="Left" 
+                         Margin="160,15,500,0"
+                         Name="Area"/>
+            <Label FontFamily="Times new roman"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Margin="25,25,600,0">
+                <Italic>Pie</Italic></Label>
+            <Label FontFamily="Times new roman"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Margin="85,25,600,0">
+                <Italic>Bar</Italic>
+            </Label>
+            <Label FontFamily="Times new roman"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Margin="145,25,500,0">
+                <Italic>Area</Italic>
+            </Label>
+
+            <Border Height="40"
+                    Width="58"
+                    CornerRadius="3"
+                    Background="#FF1D71D6"
+                    Margin="230,0,0,0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left">
+                <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                        Height="36"
+                        Width="54"
+                        FontFamily="Times new roman"
+                        FontSize="18"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        Click="Button_Click">View</Button>
+            </Border>
+
+        </Grid>
+
+        <Grid Height="450">
+            <!--Biểu đồ tròn -->
+            <chartingToolkit:Chart Name="PieChart"
+                                   FontFamily="Times new roman"
+                                   FontSize="20"
+                                   Visibility="Hidden">
+                <chartingToolkit:PieSeries 
+                    DependentValuePath="Value" 
+                    IndependentValuePath="Key" 
+                    IsSelectionEnabled="True"
+                    ItemsSource="{Binding}"
+                    />
+            </chartingToolkit:Chart>
+
+            <!-- Biểu thanh ngang -->
+            <chartingToolkit:Chart Name="BarChart"
+                                   FontFamily="Times new roman"
+                                   FontSize="20"
+                                   Visibility="Hidden">
+                <chartingToolkit:BarSeries
+                    DependentValuePath="Value" 
+                    IndependentValuePath="Key" 
+                    ItemsSource="{Binding}"
+                    IsSelectionEnabled="True"
+                    Title="BAR CHART"/>
+            </chartingToolkit:Chart>
+            
+            <!-- Biểu đồ Area -->
+            <chartingToolkit:Chart Name="AreaChart"
+                                   FontFamily="Times new roman"
+                                   FontSize="20"
+                                   Visibility="Hidden">
+                <chartingToolkit:AreaSeries
+                    DependentValuePath="Value" 
+                    IndependentValuePath="Key" 
+                    ItemsSource="{Binding}"
+                    IsSelectionEnabled="True"
+                    Title="AREA CHART"/>
+            </chartingToolkit:Chart>
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" Height="80">
+            <Border Height="40" 
+                    Width="80" HorizontalAlignment="Left"
+                    CornerRadius="4"
+                    Background="#FF1D71D6"
+                    Margin="590,-20,120,0">
+                <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                        Height="32"
+                        Width="71"
+                        FontFamily="Times new roman"
+                        FontSize="15"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        Click="Button_Update">Refresh</Button>
+            </Border>
+
+            <Border Height="40" VerticalAlignment="Center"
+                    Width="65" HorizontalAlignment="Left"
+                    CornerRadius="4"
+                    Background="#FF1D71D6"
+                    Margin="-95,-20,0,0">
+                <Button Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}"
+                        Height="32"
+                        Width="56"
+                        FontFamily="Times new roman"
+                        FontSize="15"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        Click="Button_Exit">Exit</Button>
+            </Border>
+        </StackPanel>
+    </StackPanel>
+</Window>
